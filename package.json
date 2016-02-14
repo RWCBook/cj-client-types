@@ -1,0 +1,37 @@
+{
+  "name": "TPS-CjClientNotes",
+  "version": "1.0.0",
+  "description": "TPS - Task Processing Service Collection+JSON Client (w/ notes) for Web API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "0.10.25"
+  },
+  "dependencies" : { 
+    "uritemplate" : "0.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RWCBook/cj-client-notes.git"
+  },
+  "keywords": [
+    "hypermedia",
+    "amundsen",
+    "HTML",
+    "representor",
+    "O'Reilly",
+    "RESTful",
+    "RESTful Web Clients",
+    "JSON",
+    "RPC",
+    "CRUD",
+    "Client",
+    "Collection",
+    "Cj",
+    "Amundsen",
+    "notes"
+  ],
+  "license": "MIT"
+}

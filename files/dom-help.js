@@ -190,12 +190,40 @@ function domHelp() {
     return lnk;
   }
   
+  // *************************
   // low-level helpers for DOM
-  function push(source,target) {
-    target.appendChild(source);
+  // *************************
+  
+  // pushes elements into the DOM
+  // takes list of elements as args
+  function push() {
+    var source, target, args;
+    
+    args = arguments;
+    if(args.length>=2) {
+      for(i=0,x=args.length;i<x;i++) {
+        source=args[i];
+        target=args[i+1];
+        if(target) {
+          target.appendChild(source);
+        }
+      }
+    }
   }
 
-  function tags(tag,elm) {
+  function cls(className, elm) {
+    var rtn;
+    
+    if(elm) {
+      rtn = elm.getElementsByClassName(className);
+    }
+    else {
+      rtn = document.getElementsByClassName(className);
+    }
+  }
+  
+  // returns a collection of nodes by tag name
+  function tags(tag, elm) {
     var rtn;
     
     if(elm) {
@@ -207,18 +235,22 @@ function domHelp() {
     return rtn;
   }
 
+  // returns a single node by id
   function find(id) {
     return document.getElementById(id);
   }
 
+  // creates a text node
   function text(txt) {
     return document.createTextNode(txt);
   }
 
+  // creates a document node
   function node(type) {
     return document.createElement(type);
   }
 
+  // removes child nodes
   function clear(elm) {
     while (elm.firstChild) {
       elm.removeChild(elm.firstChild);

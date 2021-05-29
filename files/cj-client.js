@@ -235,11 +235,11 @@ function cj() {
         table = d.node("table");
         table.className = "ui table";
         for(var data of item.data) {
-          if(data.display==="true") {
+          if(!data.display|| data.display=="true" || data.display==true) {
             tr = d.data_row(
               {
                 className:"item "+data.name,
-                text:data.prompt+"&nbsp;",
+                text:(data.prompt||data.name)+"&nbsp;",
                 value:data.value+"&nbsp;"
               }
             );
@@ -283,7 +283,7 @@ function cj() {
         for(var data of query.data) {
           p = d.input(
             {
-              prompt:data.prompt,
+              prompt:(data.prompt||data.name),
               name:data.name,
               value:data.value,
               required:data.required,
@@ -340,7 +340,7 @@ function cj() {
       for(var data of coll) { 
         p = d.input(
           {
-            prompt:data.prompt+"&nbsp;",
+            prompt:(data.prompt||data.name)+"&nbsp;",
             name:data.name,
             value:data.value,
             required:data.required,
@@ -432,7 +432,7 @@ function cj() {
         tx=(dv!==null?dv.value+"":"");
         p = d.input(
           {
-            prompt:data.prompt,
+            prompt:(data.prompt||data.name),
             name:data.name,
             value:tx,
             required:data.requried,
@@ -547,7 +547,7 @@ function cj() {
 
     q=0;
     form = e.target;
-    query = form.action+"/?";
+    query = form.action+(form.action.lastIndexOf("/")>-1 ? "?" : "/?");
     nodes = d.tags("input", form);
     for(i=0, x=nodes.length;i<x;i++) {
       if(nodes[i].name && nodes[i].name!=='') {
